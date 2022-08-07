@@ -1,7 +1,10 @@
-import React from "react";
+import React, { createRef } from "react";
 import ArrowLeft from "../../assets/arrowleft.svg";
 import Pen from "../../assets/pen.png";
+
 const ActivityDetail = () => {
+  const inputRef = createRef<HTMLInputElement>();
+  console.log(inputRef);
   return (
     <>
       <div className="px-28 ">
@@ -9,9 +12,16 @@ const ActivityDetail = () => {
           <img src={ArrowLeft} alt="Arrow" />
 
           <div className="">
-            <input className=" focus:border-b-black border-b-2  w-[233px] h-[54px] focus:outline-none font-popin font-[700]" />
+            <input
+              ref={inputRef}
+              className=" focus:border-b-black border-b-2  w-[233px] h-[54px] focus:outline-none font-popin font-[700]"
+            />
           </div>
-          <img src={Pen} />
+          <img
+            onClick={() => inputRef.current?.focus()}
+            className="cursor-pointer"
+            src={Pen}
+          />
         </div>
       </div>
     </>
